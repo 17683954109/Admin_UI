@@ -125,10 +125,12 @@ Car.prototype.render = function(){
 
 };
 
+//  汽车的移动方法
 Car.prototype.update = function () {
     this.x+=10;
 };
 
+//  汽车的自动移除和自动渲染
 Car.prototype.die = function(){
   if (this.x===client_w){
       for (let i = 0; i<car_arr.length;++i){
@@ -141,6 +143,8 @@ Car.prototype.die = function(){
   }
 };
 
+
+//  每 30 毫秒刷新渲染
 setInterval(function () {
     index_ctx.clearRect(0,0,index_bg_w,index_bg_h);
     car_arr.forEach(e=>{
@@ -149,6 +153,7 @@ setInterval(function () {
     });
 },30);
 
+//  每2 秒生成新的汽车
 setInterval(function () {
     new Car(150,20,`rgb(${Math.random()*254},${Math.random()*254},${Math.random()*254},0.7)`);
 },2000);
